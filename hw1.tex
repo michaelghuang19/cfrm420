@@ -20,22 +20,44 @@
 
 \subsection*{(a)}
 
-Plot the daily arithmetic returns.
+To calculate the daily arithmetic returns, we take the adjusted stock prices for each day $n$ and simply calculate the daily returns like so: \\
+$R(t_{n-1}, t_n) = \frac{{P_t}_n - P_t_{n-1}}{{P_t}_{n-1}}$ \\
+Which we then plot.
 
-\begin{verbatim}
-  Text enclosed inside \texttt{verbatim}
-  environment 
-  is printed directly 
-  and all \LaTeX{} commands are ignored.
-\end{verbatim}
+%\begin{verbatim}
+%  Text enclosed inside \texttt{verbatim}
+%  environment 
+%  is printed directly 
+%  and all \LaTeX{} commands are ignored.
+%\end{verbatim}
+
+%\framebox[1.1\width]{\textbf{answer}}
 
 \subsection*{(b)}
-Use
-\begin{verbatim} to.monthly(msft.prices, OHLC=FALSE) \end{verbatim}
-to obtain the monthly adjusted stock prices, and calculate the monthly log returns for each month from February to August inclusive.
 
+To calculate the monthly log returns, we take each time period $n$ and evaluate like so: \\
+$r(t_{n-1}, t_n) = \text{log}\frac{{P_t}_{n}}{{P_t}_{n-1}}$ \\
+which evaluated to the following results: \\
 
-\framebox[1.1\width]{\textbf{answer}}
+\begin{tabular}{|c|c|}
+	\hline
+	\textbf{Month} & \textbf{Return} \\
+	\hline
+	Feb 2021 & 0.004109548 \\
+	\hline
+	Mar 2021 & 0.014482745 \\
+	\hline
+	Apr 2021 & 0.067286307 \\
+	\hline
+	May 2021 & -0.007656559 \\
+	\hline
+	Jun 2021 & 0.081569730 \\
+	\hline
+	Jul 2021 & 0.050423540 \\
+	\hline
+	Aug 2021 & 0.059768866 \\
+	\hline
+\end{tabular}
 
 }
 
