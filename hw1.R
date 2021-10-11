@@ -58,3 +58,4 @@ logarithmic <- log(end_value / start_value)
 print(c(arithmetic, logarithmic))
 
 # 3
+# See document
