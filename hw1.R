@@ -56,3 +56,5 @@ end_value
 arithmetic <- (end_value - start_value) / start_value
 logarithmic <- log(end_value / start_value)
 print(c(arithmetic, logarithmic))
+
+# 3
