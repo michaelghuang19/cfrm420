@@ -55,15 +55,21 @@ The likelihood of a 4-sigma event, where the log returns are 4 standard deviatio
 \section*{2.}
 {\Large
 
-Suppose the one-day log return for a stock is $t_{t+1} \sim N(0.0006, 0.02^2)$. At the current time, an investor has $P_t = \$ 10$ million invested in the stock.  
+We model the one-day log return for a stock is $t_{t+1} \sim N(0.0006, 0.02^2)$, and the current investment $P_t = \$ 10$ million.
 
 \subsection*{(a)}
 
-Find the value $x$ such that the probability that the investor suffers a one-day log return less than $x$ is $1\%$.
+We aim to find the value $x$ such that the probability that the investor suffers a one-day log return less than $x$ is $1\%$. Essentially, we want to find $\mathbb{P}(X < x) = 0.01$. We can do this by using the quantile function using the normal as described; calculating this using R we can find this log return value to be \framebox[1.1\width]{\textbf{-0.04592696}}
+
 
 \subsection*{(b)}
 
-The $99\%$ value-at-risk is the value such that the probability the investor incurs a greater one-day loss is $1\%$, that is, $-(P_{t+1} - P_t)$, where $P_{t+1}$ is the value of the investment if the one-day log return $x$ were to happen. Find the $99\%$ value-at-risk. 
+We aim to find the 99\% value-at-risk, which we can do by calculating $-(P_{t+1} - P_t)$. We first calculate $P_{t+1}$. We know log returns is calculated such that \\
+$-0.04592696 = \text{ln}(\frac{P_{t+1}}{P_t})$ \\
+$e^{-0.04592696} = \frac{P_{t+1}}{P_t}$ \\ 
+$e^{-0.04592696} = \frac{P_{t+1}}{10 \text{ million}}$ \\ 
+$P_{t+1} = 9.551117 \text{ million}$ \\ \\
+$99\% \text{ VAR} = -(P_{t+1} - P_t) = -(9.551117 - 10) \text{ million} = 0.448883 \text{ million} = $ \framebox[1.1\width]{\textbf{\$448,883}}
 
 }
 
