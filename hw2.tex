@@ -29,19 +29,26 @@
 
 \subsection*{(a)}
 
-$\mathbb{P}(X \in \{3, 4, 5\})$ with $X \sim \text{Poisson}(2)$.
+We aim to find $\mathbb{P}(X \in \{3, 4, 5\})$ with $X \sim \text{Poisson}(2)$, or the probability that $X$ is 3, 4, or 5 within the Poisson distribution with $\lambda = 2$. To do this, we can find the respective pdfs and sum them up: \\
+$\mathbb{P}(X = 3) = 0.18044704$ \\
+$\mathbb{P}(X = 4) = 0.09022352$ \\
+$\mathbb{P}(X = 5) = 0.03608941$ \\ 
+$\mathbb{P}(X \in \{3, 4, 5\}) = 0.18044704 + 0.09022352 + 0.03608941 = $ \framebox[1.1\width]{\textbf{0.30675997}}
 
 \subsection*{(b)}
 
-$\mathbb{P}(Z < -4)$ with $Z \sim \text{N}(0, 1)$.
+We aim to find $\mathbb{P}(Z < -4)$ with $Z \sim \text{N}(0, 1)$. This is the default normal, and we essentially just need to take the cdf of -4, which we can look up / calculate in R to be \framebox[1.1\width]{\textbf{3.167124e-05}}
 
 \subsection*{(c)}
 
-$\mathbb{P}(T / a < -4)$ with $T \sim \text{t}(10)$ and $a = 1.25$.
+% check and see if this is right for sd_nu adjustment or not
+$\mathbb{P}(T / a < -4)$ with $T \sim \text{t}(10)$ and $a = 1.25$; that is, $T$ has a Student's $t$ distribution with 10 degrees of freedom. Again, we take the cdf of -4, which we can look up / calculate in R to be \framebox[1.1\width]{\textbf{0.001259166}}.
+% or 0.0005967334
 
 \subsection*{(d)}
 
-The quantities calculated in (b) and (c) are known as the probabilities of a 4-sigma event. Suppose that $Z$ and $T/a$ are the log returns of two different assets. Briefly comment on how much more likely 4-sigma events are for $T/a$ compared to $Z$ and what this reveals about these asset returns.
+The quantities calculated in (b) and (c) are known as the probabilities of a 4-sigma event. Suppose that $Z$ and $T/a$ are the log returns of two different assets. Briefly comment on how much more likely 4-sigma events are for $T/a$ compared to $Z$ and what this reveals about these asset returns. \\ \\
+The likelihood of a 4-sigma event, where the log returns are 4 standard deviations below the current value, is much more likely for the heavy-tailed distribution based asset than the normal distribution based asset.
 
 }
 
