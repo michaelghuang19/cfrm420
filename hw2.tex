@@ -18,55 +18,71 @@
 \section*{1.}
 {\Large 
 
+%\begin{verbatim}
+%  Text enclosed inside \texttt{verbatim}
+%  environment 
+%  is printed directly 
+%  and all \LaTeX{} commands are ignored.
+%\end{verbatim}
+%
+%\framebox[1.1\width]{\textbf{answer}}
+
 \subsection*{(a)}
 
-\begin{verbatim}
-  Text enclosed inside \texttt{verbatim}
-  environment 
-  is printed directly 
-  and all \LaTeX{} commands are ignored.
-\end{verbatim}
+$\mathbb{P}(X \in \{3, 4, 5\})$ with $X \sim \text{Poisson}(2)$.
 
 \subsection*{(b)}
 
-\framebox[1.1\width]{\textbf{answer}}
+$\mathbb{P}(Z < -4)$ with $Z \sim \text{N}(0, 1)$.
+
+\subsection*{(c)}
+
+$\mathbb{P}(T / a < -4)$ with $T \sim \text{t}(10)$ and $a = 1.25$.
+
+\subsection*{(d)}
+
+The quantities calculated in (b) and (c) are known as the probabilities of a 4-sigma event. Suppose that $Z$ and $T/a$ are the log returns of two different assets. Briefly comment on how much more likely 4-sigma events are for $T/a$ compared to $Z$ and what this reveals about these asset returns.
 
 }
 
 \section*{2.}
 {\Large
 
+Suppose the one-day log return for a stock is $t_{t+1} \sim N(0.0006, 0.02^2)$. At the current time, an investor has $P_t = \$ 10$ million invested in the stock.  
 
+\subsection*{(a)}
+
+Find the value $x$ such that the probability that the investor suffers a one-day log return less than $x$ is $1\%$.
+
+\subsection*{(b)}
+
+The $99\%$ value-at-risk is the value such that the probability the investor incurs a greater one-day loss is $1\%$, that is, $-(P_{t+1} - P_t)$, where $P_{t+1}$ is the value of the investment if the one-day log return $x$ were to happen. Find the $99\%$ value-at-risk. 
 
 }
 
 \section*{3.}
 {\Large 
 
+Let \textbf{X} = $(X_1, X_2 \sim \text{N}(\boldsymbol{\mu}, \Sigma))$ be a bivariate normal distribution, where \\
 
-
-}
-
-\section*{4.}
-{\Large 
-
-
-
-}
-
-\section*{5.}
-{\Large 
-
-
-
-}
-
-\section*{6.}
-{\Large 
+$\boldsymbol{\mu} = $
+\begin{pmatrix}
+1 \\
+2	
+\end{pmatrix}, 
+$\Sigma=$
+\begin{pmatrix}
+1 & -1.2 \\
+-1.2 & 2
+\end{pmatrix}.
 
 \subsection*{(a)}
 
+Explain why $\Sigma$ is a valid covariance matrix.
+
 \subsection*{(b)}
+
+If $X_1$ and $X_2$ are the one-period log returns of two consecutive periods, explain what $X_1 + X_2$ represents, and find the distribution of $X_1 + X_2$.
 
 }
 
