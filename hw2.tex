@@ -8,7 +8,7 @@
 
 \fancypagestyle{firstpageheader}
 {
-  \fancyhead[R]{\changefont Michael Huang \\ CFRM 420 \\ Homework 1}
+  \fancyhead[R]{\changefont Michael Huang \\ CFRM 420 \\ Homework 2}
 }
 
 \begin{document}
@@ -91,11 +91,19 @@ $\Sigma=$
 
 \subsection*{(a)}
 
-Explain why $\Sigma$ is a valid covariance matrix.
+We can show that $\Sigma$ is a valid covariance matrix if it is positive semidefinite. To do this, we can equivalently show that the eigenvalues are greater than or equal to zero. Doing this in R, we see that the eigenvalues for $\Sigma$ are 2.8 and 0.2, both of which are indeed greater than or equal to zero.
 
 \subsection*{(b)}
 
 If $X_1$ and $X_2$ are the one-period log returns of two consecutive periods, explain what $X_1 + X_2$ represents, and find the distribution of $X_1 + X_2$.
+
+We know that $X_1 + X_2$ would represent the total log return across the two consecutive periods, due to the logarithmic nature of the returns. Since $X_1$ and $X_2$ have a bivariate normal distribution, $X_1 + X_2$ would also be a normal distribution, since any linear combination of $X_1$ and $X_2$ would result in a normal distribution. Its distribution would be as follows: \\
+$\mu_{X_1 + X_2} = E(X_1 + X_2) = E(X_1) + E(X_2)$ \\
+$\text{Var}(X_1 + X_2) = \text{Var}(X_1) + \text{Var}(X_2) + 2\text{Cov}(X_1, X_2)$
+%\sigma_1^2 + \sigma_2^2 + 2\rho\sigma_1\sigma_2
+\\
+Or, a normal distribution with mean $\mu_1 + \mu_2$ and variance $\text{Var}(X_1) + \text{Var}(X_2) + 2\text{Cov}(X_1, X_2)$.
+%The sum of RVs making up the bivariate normal is a normal distribution itself, with parameters N(m1 + m2, Var(X1 + X2)). We have all the data form the mean vector mu, and covariance matrix sigma.
 
 }
 
