@@ -10,10 +10,11 @@ sum(a_vector)
 pnorm(-4)
 
 # 1(c)
-# check and see if this is right for sd_nu adjustment or not
-# sd_nu <- sqrt(10 / (10 - 2))
-# pt(-4*sd_nu, 10)
-pt(-4, 10)
+pt(-4*1.25, 10)
+
+# 1(d)
+ratio <- 0.0002686668 / 3.167124e-05
+ratio
 
 # 2(a)
 qnorm(0.01, 0.0006, 0.02)
@@ -25,3 +26,10 @@ exp(1)^(-0.04592696) * 10
 sigma <- cbind(c(1, -1.2), c(-1.2, 2))
 eigen(sigma)$values
 
+# 3(b)
+mu <- cbind(1, 2)
+mean <- mu[1] + mu[2]
+mean
+
+variance <- sigma[1,1] + sigma[2,2] + 2 * sigma[1,2]
+variance

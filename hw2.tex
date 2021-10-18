@@ -18,15 +18,6 @@
 \section*{1.}
 {\Large 
 
-%\begin{verbatim}
-%  Text enclosed inside \texttt{verbatim}
-%  environment 
-%  is printed directly 
-%  and all \LaTeX{} commands are ignored.
-%\end{verbatim}
-%
-%\framebox[1.1\width]{\textbf{answer}}
-
 \subsection*{(a)}
 
 We aim to find $\mathbb{P}(X \in \{3, 4, 5\})$ with $X \sim \text{Poisson}(2)$, or the probability that $X$ is 3, 4, or 5 within the Poisson distribution with $\lambda = 2$. To do this, we can find the respective pdfs and sum them up: \\
@@ -41,14 +32,11 @@ We aim to find $\mathbb{P}(Z < -4)$ with $Z \sim \text{N}(0, 1)$. This is the de
 
 \subsection*{(c)}
 
-% check and see if this is right for sd_nu adjustment or not
-$\mathbb{P}(T / a < -4)$ with $T \sim \text{t}(10)$ and $a = 1.25$; that is, $T$ has a Student's $t$ distribution with 10 degrees of freedom. Again, we take the cdf of -4, which we can look up / calculate in R to be \framebox[1.1\width]{\textbf{0.001259166}}.
-% or 0.0005967334
+$\mathbb{P}(T / a < -4)$ with $T \sim \text{t}(10)$ and $a = 1.25$; that is, $T$ has a Student's $t$ distribution with 10 degrees of freedom. Again, we take the cdf of -4 but multiply by the $a$ term of 1.25, which we can look up / calculate in R to be \framebox[1.1\width]{\textbf{0.0002686668}}.
 
 \subsection*{(d)}
 
-The quantities calculated in (b) and (c) are known as the probabilities of a 4-sigma event. Suppose that $Z$ and $T/a$ are the log returns of two different assets. Briefly comment on how much more likely 4-sigma events are for $T/a$ compared to $Z$ and what this reveals about these asset returns. \\ \\
-The likelihood of a 4-sigma event, where the log returns are 4 standard deviations below the current value, is much more likely for the heavy-tailed distribution based asset than the normal distribution based asset.
+The likelihood of a 4-sigma event is much higher for the heavy-tailed distribution than the normal distribution ( 0.0002686668 / 3.167124e-05 = 8.48299 times as likely); we know that the heavy-tailed t-distribution has higher kurtosis and heavier distribution towards the tails (as is the name) than the normal distribution. We can therefore say that the t-distribution will do a better job modeling more extreme events, like the 4-sigma event, where the returns are 4 standard deviations below the current value, when it comes to modeling extreme events for asset returns. 
 
 }
 
@@ -76,34 +64,16 @@ $99\% \text{ VAR} = -(P_{t+1} - P_t) = -(9.551117 - 10) \text{ million} = 0.4488
 \section*{3.}
 {\Large 
 
-Let \textbf{X} = $(X_1, X_2 \sim \text{N}(\boldsymbol{\mu}, \Sigma))$ be a bivariate normal distribution, where \\
-
-$\boldsymbol{\mu} = $
-\begin{pmatrix}
-1 \\
-2	
-\end{pmatrix}, 
-$\Sigma=$
-\begin{pmatrix}
-1 & -1.2 \\
--1.2 & 2
-\end{pmatrix}.
-
 \subsection*{(a)}
 
 We can show that $\Sigma$ is a valid covariance matrix if it is positive semidefinite. To do this, we can equivalently show that the eigenvalues are greater than or equal to zero. Doing this in R, we see that the eigenvalues for $\Sigma$ are 2.8 and 0.2, both of which are indeed greater than or equal to zero.
 
 \subsection*{(b)}
 
-If $X_1$ and $X_2$ are the one-period log returns of two consecutive periods, explain what $X_1 + X_2$ represents, and find the distribution of $X_1 + X_2$.
-
-We know that $X_1 + X_2$ would represent the total log return across the two consecutive periods, due to the logarithmic nature of the returns. Since $X_1$ and $X_2$ have a bivariate normal distribution, $X_1 + X_2$ would also be a normal distribution, since any linear combination of $X_1$ and $X_2$ would result in a normal distribution. Its distribution would be as follows: \\
-$\mu_{X_1 + X_2} = E(X_1 + X_2) = E(X_1) + E(X_2)$ \\
-$\text{Var}(X_1 + X_2) = \text{Var}(X_1) + \text{Var}(X_2) + 2\text{Cov}(X_1, X_2)$
-%\sigma_1^2 + \sigma_2^2 + 2\rho\sigma_1\sigma_2
-\\
-Or, a normal distribution with mean $\mu_1 + \mu_2$ and variance $\text{Var}(X_1) + \text{Var}(X_2) + 2\text{Cov}(X_1, X_2)$.
-%The sum of RVs making up the bivariate normal is a normal distribution itself, with parameters N(m1 + m2, Var(X1 + X2)). We have all the data form the mean vector mu, and covariance matrix sigma.
+We know that $X_1 + X_2$ would represent the total log return across the two consecutive periods, or $T_0$ to $T_2$, due to the logarithmic nature of the returns. Since $X_1$ and $X_2$ have a bivariate normal distribution, $X_1 + X_2$ would also be a normal distribution, since any linear combination of $X_1$ and $X_2$ would result in a normal distribution. Its distribution would be as follows: \\
+$\mu_{X_1 + X_2} = E(X_1 + X_2) = E(X_1) + E(X_2) = 1 + 2 = 3$ \\
+$\text{Var}(X_1 + X_2) = \text{Var}(X_1) + \text{Var}(X_2) + 2\text{Cov}(X_1, X_2) = 1 + 2 + 2 \cdot -1.2 = 0.6$ \\ \\ 
+This is a normal distribution with mean 3 and variance 0.6, or \framebox[1.1\width]{\textbf{N(3, 0.6)}}
 
 }
 
