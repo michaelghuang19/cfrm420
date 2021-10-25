@@ -38,7 +38,7 @@ We perform this in R using the \texttt{plot} function.
 
 \subsection*{(b)}
 
-We calculate these using the \texttt{mean}, \texttt{var}, \texttt{skewness} and \texttt{kurtosis}  functions (with the latter adjusted by +3, since it calculates the excess kurtosis): \\
+We calculate these using the \texttt{mean}, \texttt{var}, \texttt{skewness} and \texttt{kurtosis}  functions in R (with the latter adjusted by +3, since it calculates the excess kurtosis): \\ 
 Sample mean: \framebox[1.1\width]{\textbf{0.01320093}} \\ 
 Sample variance: \framebox[1.1\width]{\textbf{0.002066732}} \\ 
 Sample skewness: \framebox[1.1\width]{\textbf{-0.3651695}} \\ 
@@ -50,7 +50,7 @@ We take the volatility using the standard deviation, so we use the function \tex
 Bond: 0.001756121 log returns, 0.004133538 volatility \\
 Fund: 0.01320093 log returns, 0.04546132 volatility \\
 S\&P 500: 0.011261 log returns 0.04137414 volatility \\ \\ 
-From doing this comparison, we see that \framebox[1.1\width]{\textbf{it is not the case}} that assets with higher expected return have higher volatility. In fact, the lowest volatility asset, the bond, has the highest expected log return.
+From doing this comparison, we can take the correlation between the volatilities as an array and the log returns as an array, and see that the correlation is 0.9976086, so we can see that in this scenario, \framebox[1.1\width]{\textbf{it is the case}} that assets with higher expected return have higher volatility, with an extremely strong correlation.
 
 \subsection*{(d)}
 
@@ -68,7 +68,7 @@ We perform said functions in R, and \texttt{plot} as follows. We fit a normal di
 
 \subsection*{(e)}
 
-We can compute the 1\% sample quantile of the daily log returns by using the \texttt{quantile} function, resulting in a value of \framebox[1.1\width]{\textbf{-0.03774583}}. If we were to calculate the 99\% value at risk based on the quantile of the daily log returns rather than the fitted normal distribution, this would be a better fit because as we can see in 1(d), the fitted normal distribution is not a great fit for the actual returns.
+We can compute the 1\% sample quantile of the daily log returns by using the \texttt{quantile} function, resulting in a value of \framebox[1.1\width]{\textbf{-0.03774583}}. If we were to calculate the 99\% value at risk based on the quantile of the daily log returns rather than the fitted normal distribution, this would be a better fit because as we can see in 1(d), the fitted normal distribution is not a really great fit for the actual returns.
 
 \newpage
 
@@ -79,7 +79,7 @@ We can compute the 1\% sample quantile of the daily log returns by using the \te
 
 \subsection*{(a)}
 
-The QQ plot is similar to that of a heavy-tailed distribution.
+The QQ plot distribution is not really exactly close to the line, similar to that of a heavy-tailed distribution rather than normal, so \framebox[1.1\width]{\textbf{it does not seem normal.}}
 
 \begin{figure}[h!]
   \centering
@@ -88,13 +88,13 @@ The QQ plot is similar to that of a heavy-tailed distribution.
 
 \subsection*{(b)}
 
-We find the 25\% and 75\% sample quantiles using the \texttt{quantile} function, finding these values to be -0.004354415 and 0.006505337. We also know that the standard quantile function tells us that the values at 0.25 and 0.75 are -0.6744898 and 0.6744898. Doing some math, we find the slope to be \\
-$m = \frac{0.006505337 - -0.004354415}{0.6744898 - -0.6744898} = \frac{0.010859752}{1.3489796} = 0.0080503456$ \\
+We find the 25\% and 75\% sample quantiles using the \texttt{quantile} function, finding these values to be -0.0009503976 and 0.004254224. We also can use the standard quantile function \texttt{qnorm} to find that the values at 0.25 and 0.75 are -0.6744898 and 0.6744898. Doing some math, we find the slope to be \\
+$m = \frac{0.004254224 - -0.0009503976}{0.6744898 - -0.6744898} = \frac{0.0052046216}{1.3489796} = 0.00385819148$ \\
 and using some algebra to solve for the intercept: \\ 
-$0.006505337 = 0.0080503456 \cdot 0.6744898 + b$ \\
-$b = 0.006505337 - 0.00542987599$ \\ 
-$b = 0.00107546101$ \\ \\ 
-So our line has \framebox[1.1\width]{\textbf{slope 0.0080503456 and intercept of 0.00107546101.}}
+$0.004254224 = 0.00385819148 \cdot 0.6744898 + b$ \\
+$b = 0.004254224 - 0.00260231079$ \\ 
+$b = 0.00165191321$ \\ \\ 
+So our line has \framebox[1.1\width]{\textbf{slope 0.00385819148 and intercept of 0.00165191321.}}
 
 \subsection*{(c)}
 

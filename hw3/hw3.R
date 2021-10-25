@@ -23,7 +23,7 @@ sp500.monthly.ret <- na.omit(Return.calculate(to.monthly(sp500.data, OHLC=FALSE)
 
 # 1(a)
 
-plot(fund.data, fund.daily.ret, main="Fund Log Returns", xlab="dates", ylab="log returns")
+plot(fund.daily.ret, main="Fund Log Returns", xlab="dates", ylab="log returns")
 
 # 1(b)
 
@@ -34,13 +34,17 @@ kurtosis(fund.monthly.ret) + 3
 
 # 1(c)
 
-sd(bond.monthly.ret)
-sd(fund.monthly.ret)
-sd(sp500.monthly.ret)
+bond_sd <- sd(bond.monthly.ret)
+fund_sd <- sd(fund.monthly.ret)
+sp500_sd <- sd(sp500.monthly.ret)
+sd_array <- c(bond_sd, fund_sd, sp500_sd)
 
-mean(bond.monthly.ret)
-mean(fund.monthly.ret)
-mean(sp500.monthly.ret)
+bond_mean <- mean(bond.monthly.ret)
+fund_mean <- mean(fund.monthly.ret)
+sp500_mean <- mean(sp500.monthly.ret)
+mean_array <- c(bond_mean, fund_mean, sp500_mean)
+
+cor(sd_array, mean_array)
 
 # 1(d)
 
@@ -59,12 +63,13 @@ quantile(fund.daily.ret, 0.01)
 
 # 2(a)
 
-qqnorm(bond.monthly.ret)
+qqnorm(bond.monthly.ret, main = "Bond Monthly Returns QQ Plot")
 qqline(bond.monthly.ret)
 
 # 2(b)
 
 x = c(0.25, 0.75)
-qnorm(x,mean=0,sd=1)
-quantile(fund.daily.ret, 0.25)
-quantile(fund.daily.ret, 0.75)
+qnorm(x, mean=0, sd=1)
+q_25 <- quantile(bond.monthly.ret, 0.25)
+q_75 <- quantile(bond.monthly.ret, 0.75)
+
