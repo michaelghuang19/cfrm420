@@ -48,20 +48,23 @@ kde <- density(fund.daily.ret)
 plot(kde, main = "Fund KDE")
 fund_mean <- mean(fund.daily.ret)
 fun_var <- var(fund.daily.ret)
-
+x <- seq(-1,1,len=1000)
+norm_fit <- dnorm(x, mean = fund_mean, sd = sqrt(fun_var))
+plot(kde, main = "Fund KDE with Norm Fit")
+lines(x, norm_fit, col="blue",lwd=2)
 
 # 1(e)
 
-
+quantile(fund.daily.ret, 0.01)
 
 # 2(a)
 
-
+qqnorm(bond.monthly.ret)
+qqline(bond.monthly.ret)
 
 # 2(b)
 
-
-
-# 2(c)
-
-
+x = c(0.25, 0.75)
+qnorm(x,mean=0,sd=1)
+quantile(fund.daily.ret, 0.25)
+quantile(fund.daily.ret, 0.75)
