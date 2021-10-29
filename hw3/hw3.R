@@ -70,6 +70,6 @@ qqline(bond.monthly.ret)
 
 x = c(0.25, 0.75)
 qnorm(x, mean=0, sd=1)
-q_25 <- quantile(bond.monthly.ret, 0.25)
-q_75 <- quantile(bond.monthly.ret, 0.75)
+quantile(bond.monthly.ret, 0.25)
+quantile(bond.monthly.ret, 0.75)
 
