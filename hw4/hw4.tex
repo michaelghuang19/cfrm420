@@ -87,23 +87,49 @@ We plot this in R:
 \section*{2.}
 {\Large
 
+Consider the process $Y_t = \phi Y_{t-1} + \varepsilon_t$ with $t = 1, 2, \dots$ \\
+where 
+
 \subsection*{(a)}
 
-
+Since $\varepsilon_t \sim \text{WN}(0,1)$, we know that it has $\mathbb{E}[\varepsilon_t] = 0$ by definition. This therefore doesn't contribute to any $\mathbb{E}[Y_t]$, so we can just take this out and only consider the $\phi Y_{t-1}$ term. For $t = 0$, we can use the initial value definition to see that $Y_1 = \phi \mathbb{E}[Y_0] = \phi \cdot 0 = 0$. It therefore follows for any of the following terms that $\mathbb{Y_t} = 0$, as $\mathbb{E}[Y_t] = \phi \cdot \mathbb{E}[Y_{t-1}] + \mathbb{E}(\varepsilon_t) = \phi \cdot 0 + 0 = 0 + 0 = 0$.
 
 \subsection*{(b)}
 
-
+We know by definition that $Y_t = \phi Y_{t-1} + \varepsilon_t$, or equivalently $Y_{t+1} = \phi Y_t + \varepsilon_{t+1}$, $Y_{t+2} = \phi^2 Y_{t+1} + \varepsilon_{t+2}$, etc. Equivalently, we can say that \\ $Y_{t+h} = \phi Y_t + \varepsilon_{t+h} = \phi^h Y_{t} + \varepsilon_{t+1}$ \\ \\
+% ?????
+We can now show that \\
+$\text{Cov}(Y_t, Y_{t+h})$ \\
+$ = \text{Cov}(\phi Y_{t-1} + \varepsilon_t, Y_{t+h})$ \\
+$ = \text{Cov}(\phi Y_{t-1} + \varepsilon_t, \phi^h Y_{t} + \varepsilon_{t+1})$ \\
+$ = \phi^{h+1}\text{Cov}(Y_{t-1}, Y_{t}) + \text{Cov}(\varepsilon_t, Y_{t}) + \text{Cov}(Y_{t-1}, \varepsilon_{t+1}) + \text{Cov}(\varepsilon_t, \varepsilon_{t+1})$ \\
+$ = \phi^{h+1}\text{Cov}(Y_{t-1}, Y_{t}) + 0 + 0 + 0$ \hfill by definitions of $\varepsilon, Y_t$ \\ 
+$= \phi^{h+1} \gamma(1)$ \\
+$= \phi^{h+1} \frac{\sigma^2}{1-\phi^2}\phi^1 = \phi^{h+1} \frac{\sigma^2}{1-\phi^2}$ \\ 
+which clearly does not depend on $t$.
 
 \subsection*{(c)}
 
-
+We plot this in R: 
+\begin{figure}[h!]
+  \centering
+  \includegraphics[width=500pt]{hw4_2c.png}
+\end{figure}
 
 \subsection*{(d)}
 
+% ?????
+We don't fix the initial value, so we dont need to worry about burn-in and discard the first batch of simulated values. The process is covariance stationary from the start. 
 
+\newpage
 
 \subsection*{(e)}
+
+This line essentially just keeps going upwards.
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=500pt]{hw4_2e.png}
+\end{figure}
 
 }
 
