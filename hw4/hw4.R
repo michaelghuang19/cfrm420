@@ -10,10 +10,19 @@ y2 <- y^2
 acf(y2, lag.max = 1000)
 
 # 2(c)
+# as adapted from lecture
 
-ar1.acf <- ARMAacf(ar=0.4, lag.max=250)
-ar1.model <- list(ar=c(0.4))
-y <- arima.sim(model=ar1.model, n=250)
+# set seed for consistency
+set.seed(123)
+n <- 250
+phi <- 0.4
+e <- c(NA,rnorm(n)) # Makes epsilon_1 = e[2] so the index is consistent with y y <- rep(NA, n)
+y <- rep(NA, n)
+y[1] <- 0
+for (i in 2:n) {
+  y[i] <- phi*y[i-1]+e[i]
+}
+y <- y[-1]
 plot(y, type="l", main="2(c) AR(1) Simulation")
 
 # 2(e)

@@ -64,6 +64,7 @@ However, we can see that \\
 $\mathbb{E}[Y_t^2Y_{t-1}^2]$ \\
 $= \mathbb{E}[Z_t^2Z_{t-1}^2Z_{t-1}^2Z_{t-2}^2]$ \\
 $= \mathbb{E}[Z_t^2Z_{t-1}^4Z_{t-2}^2]$ \\
+At this point, we see the common underlying $Z_{t-1}$ term, which indicates that this is not IID.  We can go further using moments and chi-squared to go further mathematically: \\ 
 $= \mathbb{E}[1 \cdot Z_{t-1}^4 \cdot 1]$ \hfill as we previously calculated \\
 $= \mathbb{E}[Z_{t-1}^4]$ \\ 
 % check this later
@@ -96,13 +97,17 @@ Since $\varepsilon_t \sim \text{WN}(0,1)$, we know that it has $\mathbb{E}[\vare
 
 \subsection*{(b)}
 
-We know by definition that $Y_t = \phi Y_{t-1} + \varepsilon_t$, or equivalently $Y_{t+1} = \phi Y_t + \varepsilon_{t+1}$, $Y_{t+2} = \phi^2 Y_{t+1} + \varepsilon_{t+2}$, etc. Equivalently, we can say that \\ $Y_{t+h} = \phi Y_t + \varepsilon_{t+h} = \phi^h Y_{t} + \varepsilon_{t+1}$ \\ \\
+We know by definition that $Y_t = \phi Y_{t-1} + \varepsilon_t$, or equivalently \\
+$Y_{t+1} = \phi Y_t + \varepsilon_{t+1}$ \\
+$Y_{t+2} = \phi^2 Y_{t+1} + \phi\varepsilon_{t+1} + \varepsilon_{t+2}$ \\ 
+$Y_{t+3} = \phi^3 Y_{t+2} + \phi^2\varepsilon_{t+1} + \phi\varepsilon_{t+2} + \varepsilon_{t+3}$ \\ 
+etc. Equivalently, we can say that \\ $Y_{t+h} = \phi^h Y_{t} + \sum_{i=0}^{h-1} \phi^i\varepsilon_{t+h-i}$ \\ \\
 % ?????
 We can now show that \\
 $\text{Cov}(Y_t, Y_{t+h})$ \\
 $ = \text{Cov}(\phi Y_{t-1} + \varepsilon_t, Y_{t+h})$ \\
-$ = \text{Cov}(\phi Y_{t-1} + \varepsilon_t, \phi^h Y_{t} + \varepsilon_{t+1})$ \\
-$ = \phi^{h+1}\text{Cov}(Y_{t-1}, Y_{t}) + \text{Cov}(\varepsilon_t, Y_{t}) + \text{Cov}(Y_{t-1}, \varepsilon_{t+1}) + \text{Cov}(\varepsilon_t, \varepsilon_{t+1})$ \\
+$ = \text{Cov}(\phi Y_{t-1} + \varepsilon_t, \phi^h Y_{t} + \sum_{i=0}^{h-1} \phi^i\varepsilon_{t+h-i})$ \\
+$ = \phi^{h+1}\text{Cov}(Y_{t-1}, Y_{t}) + \text{Cov}(\varepsilon_t, Y_{t}) + \text{Cov}(Y_{t-1}, \sum_{i=0}^{h-1} \phi^i\varepsilon_{t+h-i}) + \text{Cov}(\varepsilon_t, \sum_{i=0}^{h-1} \phi^i\varepsilon_{t+h-i})$ \\
 $ = \phi^{h+1}\text{Cov}(Y_{t-1}, Y_{t}) + 0 + 0 + 0$ \hfill by definitions of $\varepsilon, Y_t$ \\ 
 $= \phi^{h+1} \gamma(1)$ \\
 $= \phi^{h+1} \frac{\sigma^2}{1-\phi^2}\phi^1 = \phi^{h+1} \frac{\sigma^2}{1-\phi^2}$ \\ 
@@ -118,14 +123,14 @@ We plot this in R:
 
 \subsection*{(d)}
 
-% ?????
-We don't fix the initial value, so we dont need to worry about burn-in and discard the first batch of simulated values. The process is covariance stationary from the start. 
+We have an initial value given to us at 0, so we don't need to simulate the values from an infinite period of previous times, so we don't need to calculate this in the manner of a series that started infinitely backwards in time, so we don't need to worry about burn-in in this case.
+% We don't fix the initial value, so we dont need to worry about burn-in and discard the first batch of simulated values. The process is covariance stationary from the start. 
 
 \newpage
 
 \subsection*{(e)}
 
-This line essentially just keeps going upwards.
+This line essentially just keeps going upwards exponentially. (monotonically increasing).
 \begin{figure}[h]
   \centering
   \includegraphics[width=500pt]{hw4_2e.png}
