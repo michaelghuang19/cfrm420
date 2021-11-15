@@ -32,18 +32,26 @@ sigma <- cbind(c(1, 0.8), c(0.8, 2))
 set.seed(123)
 
 for (n in c(20, 100, 500)) {
-  sample <- mvtnorm::rmvnorm(n=n, mean=mu, sigma=sigma)
-  rho <- cor(sample)
-  kde <- density(rho)
   
-  # fix cov here, should just be list of index 1/1
+  rho_list <- c()
+  
+  for (i in 1:10000) {
+    sample <- mvtnorm::rmvnorm(n=n, mean=mu, sigma=sigma)
+    rho <- cor(sample)
+    cor <- rho[1,2]
+    
+    rho_list <- append(rho_list, cor)
+  }
+  
+  kde <- density(rho_list)
+  
   plot(kde, main=paste0("kde with ", as.character(n), " samples"))
   
-  bias <- (mean(rho) * n) - sum(rho)
-  print(bias)
+  bias <- (mean(rho_list) * 10000) - sum(rho_list) 
+  print(paste("bias", bias))
   
-  se <- var(rho)
-  print(se)
+  se <- var(rho_list)
+  print(paste("se", se))
 }
 
   

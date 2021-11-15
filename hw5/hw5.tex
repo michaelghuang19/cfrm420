@@ -36,29 +36,32 @@ We can calculate the mean and variance of the distribution which we can use to c
 
 \subsection*{(a)}
 
-We plot this in R:
+We plot this in R, and notice that the symmetry of the distribution tends to shift more towards the middle and a more symmetrical distribution rather than asymmetrical as $n$ increases, while the spread generally gets slightly more refined and tighter as $n$ increases.
 \begin{figure}[h!]
   \centering
-  \includegraphics[width=500pt]{hw5_2a_20.png}
+  \includegraphics[width=450pt]{hw5_2a_20.png}
 \end{figure}
-\begin{figure}[h!]
+\begin{figure}[t!]
   \centering
-  \includegraphics[width=500pt]{hw5_2a_100.png}
+  \includegraphics[width=450pt]{hw5_2a_100.png}
 \end{figure}
-\begin{figure}[h!]
+\begin{figure}[t!]
   \centering
-  \includegraphics[width=500pt]{hw5_2a_100.png}
+  \includegraphics[width=450pt]{hw5_2a_100.png}
 \end{figure}
-% No clue, look at diagrams more seriously -- narrowing/expanding?
-The symmetry of the distribution tends to stay the same time as $n$ increases, while the spread seems to decrease from $n = 20$ to $n = 100$, and then increase yet again from $n = 100$ to $n = 200$.
+\newpage
 
 \subsection*{(b)}
 
+We can find each $\text{bias}(\hat{\rho}_n)$ by taking the sum of the means subtracted by the sum of the values: \\
+$\text{bias}(\hat{\rho}_{20}) = 
+$ 2.910383e-11 \\
+$\text{bias}(\hat{\rho}_{100}) = $ 1.546141e-11 \\
+$\text{bias}(\hat{\rho}_{500}) = $ 1.091394e-11 \\ \\
 We can find the variance for each $n$ to estimate $\text{se}(\hat{\rho}_n)$: \\
-$\text{se}(\hat{\rho}_20) = 0.1890982$ \\
-$\text{se}(\hat{\rho}_100) = 0.109021$ \\
-$\text{se}(\hat{\rho}_500) = 0.08856526$ \\ \\
-We can find the 
+$\text{se}(\hat{\rho}_{20}) = 0.02706857$ \\
+$\text{se}(\hat{\rho}_{100}) = 0.004806388$ \\
+$\text{se}(\hat{\rho}_{500}) = 0.0009463929$
 
 \subsection*{(c)}
 
