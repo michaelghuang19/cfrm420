@@ -50,7 +50,7 @@ for (n in c(20, 100, 500)) {
   bias <- (mean(rho_list) * 10000) - sum(rho_list) 
   print(paste("bias", bias))
   
-  se <- var(rho_list)
+  se <- sqrt(var(rho_list))
   print(paste("se", se))
 }
 

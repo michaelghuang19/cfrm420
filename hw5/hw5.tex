@@ -53,20 +53,20 @@ We plot this in R, and notice that the symmetry of the distribution tends to shi
 
 \subsection*{(b)}
 
-We can find each $\text{bias}(\hat{\rho}_n)$ by taking the sum of the means subtracted by the sum of the values: \\
+By definition, we can find each $\text{bias}(\hat{\rho}_n)$ by taking the sum of the means subtracted by the sum of the values: \\
 $\text{bias}(\hat{\rho}_{20}) = 
-$ 2.910383e-11 \\
-$\text{bias}(\hat{\rho}_{100}) = $ 1.546141e-11 \\
-$\text{bias}(\hat{\rho}_{500}) = $ 1.091394e-11 \\ \\
-We can find the variance for each $n$ to estimate $\text{se}(\hat{\rho}_n)$: \\
-$\text{se}(\hat{\rho}_{20}) = 0.02706857$ \\
-$\text{se}(\hat{\rho}_{100}) = 0.004806388$ \\
-$\text{se}(\hat{\rho}_{500}) = 0.0009463929$
+$ -2.00088834390044e-11 \\
+$\text{bias}(\hat{\rho}_{100}) = $ 1.45519152283669e-11 \\
+$\text{bias}(\hat{\rho}_{500}) = $ 4.54747350886464e-12 \\ \\
+By definition, we can find the square root of the variance for each $n$ to estimate $\text{se}(\hat{\rho}_n)$: \\
+$\text{se}(\hat{\rho}_{20}) = 0.164072631400487$ \\
+$\text{se}(\hat{\rho}_{100}) = 0.0687902431584231$ \\
+$\text{se}(\hat{\rho}_{500}) = 0.0306282343447513$
 
 \subsection*{(c)}
 
 As stated, the approximate formulas for large $n$ are $\text{bias}(\hat{\rho}_n) \approx 0$ and $\text{se}(\hat{\rho}_n) \approx \frac{1-\rho^2}{\sqrt{n}} = \frac{1 - (\frac{0.8}{\sqrt{2}})^2}{\sqrt{10000}} = \frac{1 - 0.32}{100} = \frac{0.68}{100} = 0.0068$, since we know that $\rho_{12} = \frac{\sigma_{12}}{\sqrt{\sigma_{11}\sigma_{22}}} = \frac{0.8}{\sqrt{2}}$ and $n = 10000$, as given. \\ \\
-Looking at our estimatede values, the bias is very close to 0, and only gets better as $n$ increases, while the variance is initially not as close to the actual value but rapidly gets closer but then keeps decreasing as $n$ increases and thus might underestimate the standard error.
+Looking at our estimated values, the bias is very close to 0, and only gets better as $n$ increases, while the variance is initially not as close to the actual value but also continues to decrease and get better as $n$ increases.
 
 }
 
@@ -75,7 +75,11 @@ Looking at our estimatede values, the bias is very close to 0, and only gets bet
 
 \subsection*{(a)}
 
+By definition, we know that $\text{bias}(\hat{\theta_1}) = \mathbb{E}[\hat{\theta_1}] - \theta$. We also know that the estimator $\hat{\theta_1}$ is essentially equivalent to doubling the sample mean, or expectation, so we can simplify this expression to be \\
+$\text{bias}(\hat{\theta_1}) = \mathbb{E}[\hat{\theta_1}] - \theta = 2 \cdot \mathbb{E}[\theta] - \theta = 2 \cdot \frac{\theta}{2} - \theta = \theta - \theta = 0.$ \\ \\
+By definition, we also know that $\text{se}(\hat{\theta_1}) = \sqrt{\text{Variance}(\hat{\theta_1})}$
 
+$\theta / \sqrt{3n}$
 
 \subsection*{(b)}
 
@@ -83,6 +87,9 @@ Looking at our estimatede values, the bias is very close to 0, and only gets bet
 
 \subsection*{(c)}
 
+The MSE
+
+$\hat{\theta_2}$
 
 }
 
