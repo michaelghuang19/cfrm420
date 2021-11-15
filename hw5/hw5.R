@@ -53,7 +53,3 @@ for (n in c(20, 100, 500)) {
   se <- sqrt(var(rho_list))
   print(paste("se", se))
 }
-
-  
-  
-

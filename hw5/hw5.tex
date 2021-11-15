@@ -76,20 +76,43 @@ Looking at our estimated values, the bias is very close to 0, and only gets bett
 \subsection*{(a)}
 
 By definition, we know that $\text{bias}(\hat{\theta_1}) = \mathbb{E}[\hat{\theta_1}] - \theta$. We also know that the estimator $\hat{\theta_1}$ is essentially equivalent to doubling the sample mean, or expectation, so we can simplify this expression to be \\
-$\text{bias}(\hat{\theta_1}) = \mathbb{E}[\hat{\theta_1}] - \theta = 2 \cdot \mathbb{E}[\theta] - \theta = 2 \cdot \frac{\theta}{2} - \theta = \theta - \theta = 0.$ \\ \\
-By definition, we also know that $\text{se}(\hat{\theta_1}) = \sqrt{\text{Variance}(\hat{\theta_1})}$
-
-$\theta / \sqrt{3n}$
+$\text{bias}(\hat{\theta_1}) = \mathbb{E}[\hat{\theta_1}] - \theta = 2 \cdot \mathbb{E}[\theta] - \theta = 2 \cdot \frac{\theta}{2} - \theta = \theta - \theta = 0$, as we aimed to show. \\ \\
+By definition, we also know that $\text{se}(\hat{\theta_1}) = \sqrt{\text{Variance}(\hat{\theta_1})}$, and thus we can evaluate this as \\ 
+$\text{se}(\hat{\theta_1}) 
+= \sqrt{\text{Variance}(\hat{\theta_1})}
+= \frac{2}{n} \cdot \sqrt{\text{Variance}(\theta)} 
+= \frac{2}{n} \cdot \sqrt{\frac{\theta^2}{12}} 
+= \sqrt{\frac{4\theta^2}{12n}}
+= \sqrt{\frac{4\theta^2}{3n}} 
+= \frac{\theta}{\sqrt{3n}}$ \\
+which is what we aimed to show.
+% lol wtf where does the n come from 
 
 \subsection*{(b)}
 
-
+We can find the pdf of $\hat{\theta_2}$ by first taking the derivative of the given cdf: \\ 
+$f_{\hat{\theta_2}}(x) = \frac{d}{dx} (\frac{nx}{(n+1)\theta})^n$ \\
+$= \frac{d}{dx} (\frac{n^nx^n}{(n+1)^n\theta^n})^n$ \\
+$= \frac{n^{n+1}x^{n-1}}{(n+1)^n\theta^n}$ \\ \\
+To find the bias, we need to find the expectation of this pdf. By definition, for a uniform distribution, we do this by taking the integral of the pdf multiplied by $x$ over the range $[0, \infty)$: \\
+$\mathbb{E}(\hat{\theta_1}) = \int_{0}^{\infty}\frac{n^{n+1}x^{n-1}}{(n+1)^n\theta^n} \cdot x \text{ } dx $ \\
+$= \int_{0}^{\infty}\frac{n^{n+1}x^n}{(n+1)^n\theta^n} \text{ } dx $ \\ 
+$= \frac{n^{n+1}x^{n+1}}{(n+1)^{n+1}\theta^n} |_{x=0}^{\infty} $ \\ 
+$= \frac{n^{n+1}x^{n+1}}{(n+1)^{n+1}\theta^n} |_{x=0}^{\infty} $ \\
+$= \frac{n^{n+1}\infty^{n+1}}{(n+1)^{n+1}\theta^n} - \frac{n^{n+1}0^{n+1}}{(n+1)^{n+1}\theta^n} $ \\
+$= \frac{n^{n+1}\infty^{n+1}}{(n+1)^{n+1}\theta^n} - 0$ \\ 
+$= 0$ \\
+as we aimed to show. \\ \\
+% lmao i did this wrong
+We can find the standard error by finding $\text{se}(\hat{\theta_2}) = \sqrt{\text{Variance}(\hat{\theta_2})} = \mathbb{E}(\hat{\theta_2}^2) - [\mathbb{E}(\hat{\theta_2})]^2$ \\ 
+$= integrals$ \\
+$= \frac{\theta}{\sqrt{n(n+2)}}$ \\ \\
+as we aimed to show.
+% 
 
 \subsection*{(c)}
 
-The MSE
-
-$\hat{\theta_2}$
+The MSE is defined as $\text{mse}(\hat{\theta}) = \text{bias}(\hat{\theta})^2 + \text{se}(\hat{\theta})^2$, the sum of the bias squared and the standard error squared. Both estimators have bias of 0, so we need only look at the standard error. We can easily see that the denominator of $\hat{\theta_2}$ will increase much more rapidly than that of $\hat{\theta_1}$ as $n$ increases, as the the $n^2$ term in the square root of the denominator of $\hat{\theta_2}$ rather than the $n$ term in the square root of the denominator of $\hat{\theta_1}$ will lead to the overall standard error being much smaller as $n$ increases, which in turn means that the MSE will be much smaller, which means that $\hat{\theta_1}$ will effectively be a better estimator.
 
 }
 
