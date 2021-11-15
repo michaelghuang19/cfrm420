@@ -48,3 +48,5 @@ vignettes/*.pdf
 *.dvi
 
 */__pycache__/
+
+*.DS_Store

@@ -27,7 +27,7 @@
 
 % \framebox[1.1\width]{\textbf{answer}}
 
-
+We can calculate the mean and variance of the distribution which we can use to create a normal distribution according to CLT. Since the yearly log return is the sum of 252 iid daily log returns, we can simply find the 95\% confidence interval by taking 252 multiplied by these 95\% confidence interval bands, giving us \framebox[1.1\width]{\textbf{-0.001519248 to 0.001682269}} according to our sample.
 
 }
 
@@ -36,11 +36,29 @@
 
 \subsection*{(a)}
 
-
+We plot this in R:
+\begin{figure}[h!]
+  \centering
+  \includegraphics[width=500pt]{hw5_2a_20.png}
+\end{figure}
+\begin{figure}[h!]
+  \centering
+  \includegraphics[width=500pt]{hw5_2a_100.png}
+\end{figure}
+\begin{figure}[h!]
+  \centering
+  \includegraphics[width=500pt]{hw5_2a_100.png}
+\end{figure}
+% No clue, look at diagrams more seriously -- narrowing/expanding?
+The symmetry of the distribution tends to stay the same time as $n$ increases, while the spread seems to decrease from $n = 20$ to $n = 100$, and then increase yet again from $n = 100$ to $n = 200$.
 
 \subsection*{(b)}
 
-
+We can find the variance for each $n$ to estimate $\text{se}(\hat{\rho}_n)$: \\
+$\text{se}(\hat{\rho}_20) = 0.1890982$ \\
+$\text{se}(\hat{\rho}_100) = 0.109021$ \\
+$\text{se}(\hat{\rho}_500) = 0.08856526$ \\ \\
+We can find the 
 
 \subsection*{(c)}
 
