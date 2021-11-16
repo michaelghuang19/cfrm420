@@ -27,7 +27,7 @@
 
 % \framebox[1.1\width]{\textbf{answer}}
 
-We can calculate the mean and variance of the distribution which we can use to create a normal distribution according to CLT. Since the yearly log return is the sum of 252 iid daily log returns, we can simply find the 95\% confidence interval by taking 252 multiplied by these 95\% confidence interval bands, giving us \framebox[1.1\width]{\textbf{-0.07356289 to 0.11564159}} according to our sample.
+We can calculate the mean and variance of the distribution which we can use to create a normal distribution according to CLT. Since the yearly log return is the sum of 252 iid daily log returns, we can simply find the 95\% confidence interval by taking 252 multiplied by these 95\% confidence interval bands, giving us \framebox[1.1\width]{\textbf{-0.3991505 to 0.4402316}} according to our seeded sample.
 
 }
 
@@ -78,36 +78,51 @@ Looking at our estimated values, the bias is very close to 0, and only gets bett
 By definition, we know that $\text{bias}(\hat{\theta_1}) = \mathbb{E}[\hat{\theta_1}] - \theta$. We also know that the estimator $\hat{\theta_1}$ is essentially equivalent to doubling the sample mean, or expectation, so we can simplify this expression to be \\
 $\text{bias}(\hat{\theta_1}) = \mathbb{E}[\hat{\theta_1}] - \theta = 2 \cdot \mathbb{E}[\theta] - \theta = 2 \cdot \frac{\theta}{2} - \theta = \theta - \theta = 0$, as we aimed to show. \\ \\
 By definition, we also know that $\text{se}(\hat{\theta_1}) = \sqrt{\text{Variance}(\hat{\theta_1})}$, and thus we can evaluate this as \\ 
-$\text{se}(\hat{\theta_1}) 
-= \sqrt{\text{Variance}(\hat{\theta_1})} \\
-= \sqrt{\mathbb{E}[\hat{\theta_1}^2] - (\mathbb{E}[\hat{\theta_1}])^2} \\
-= \frac{2}{n} \cdot \sqrt{\text{Variance}(\theta)} \\
-= \frac{2}{n} \cdot \sqrt{\frac{\theta^2}{12}} \\
-= \sqrt{\frac{4\theta^2}{12n}}
-= \sqrt{\frac{4\theta^2}{3n}} 
+$\text{se}(\hat{\theta_1}) = \sqrt{\text{Variance}(\hat{\theta_1})} \\
+= \sqrt{\text{Variance}(\frac{2}{n} \cdot \sum_{i=1}^{n} X_i)} \\
+= \sqrt{\frac{4}{n^2} \cdot \text{Variance}(\sum_{i=1}^{n} X_i)} \\
+= \sqrt{\frac{4}{n^2} \cdot n \cdot \frac{\theta^2}{12}} $ \hfill Due to the iid nature of $X$, Definition of $\theta$ \\ 
+$= \sqrt{\frac{4n\theta^2}{12n^2}} \\
+= \sqrt{\frac{\theta^2}{3n}} \\
 = \frac{\theta}{\sqrt{3n}}$ \\
 which is what we aimed to show.
-% lol wtf where does the n come from 
 
 \subsection*{(b)}
 
 We can find the pdf of $\hat{\theta_2}$ by first taking the derivative of the given cdf: \\ 
 $f_{\hat{\theta_2}}(x) = \frac{d}{dx} (\frac{nx}{(n+1)\theta})^n$ \\
-$= \frac{d}{dx} (\frac{n^nx^n}{(n+1)^n\theta^n})^n$ \\
+$= \frac{d}{dx} (\frac{n^nx^n}{(n+1)^n\theta^n})$ \\
 $= \frac{n^{n+1}x^{n-1}}{(n+1)^n\theta^n}$ \\ \\
-To find the bias, we need to find the expectation of this pdf. By definition, for a uniform distribution, we do this by taking the integral of the pdf multiplied by $x$ over the range $[0, \infty)$: \\
-$\mathbb{E}(\hat{\theta_1}) = \int_{0}^{\infty}\frac{n^{n+1}x^{n-1}}{(n+1)^n\theta^n} \cdot x \text{ } dx $ \\
-$= \int_{0}^{\infty}\frac{n^{n+1}x^n}{(n+1)^n\theta^n} \text{ } dx $ \\ 
-$= \frac{n^{n+1}x^{n+1}}{(n+1)^{n+1}\theta^n} |_{x=0}^{\infty} $ \\ 
-$= \frac{n^{n+1}x^{n+1}}{(n+1)^{n+1}\theta^n} |_{x=0}^{\infty} $ \\
-$= \frac{n^{n+1}\infty^{n+1}}{(n+1)^{n+1}\theta^n} - \frac{n^{n+1}0^{n+1}}{(n+1)^{n+1}\theta^n} $ \\
-$= \frac{n^{n+1}\infty^{n+1}}{(n+1)^{n+1}\theta^n} - 0$ \\ 
-$= 0$ \\
+To find the bias, one component we need to find is the expectation of this pdf. By definition, for the defined uniform distribution, we do this by taking the integral of the pdf multiplied by $x$ over the range $[0, \frac{n+1}{n}\theta]$: \\
+$\mathbb{E}(\hat{\theta_2}) $\\
+$= \int_{0}^{\frac{n+1}{n}\theta}\frac{n^{n+1}x^{n-1}}{(n+1)^n\theta^n} \cdot x \text{ } dx $ \\
+$= \int_{0}^{\frac{n+1}{n}\theta}\frac{n^{n+1}x^n}{(n+1)^n\theta^n} \text{ } dx $ \\ 
+$= \frac{n^{n+1}x^{n+1}}{(n+1)^{n+1}\theta^n} |_{x=0}^{\frac{n+1}{n}\theta} $ \\ 
+$= \frac{n^{n+1}(\frac{n+1}{n}\theta)^{n+1}}{(n+1)^{n+1}\theta^n} - \frac{n^{n+1}0^{n+1}}{(n+1)^{n+1}\theta^n} $ \\
+$= \frac{n^{n+1}(\frac{n+1}{n}\theta)^{n+1}}{(n+1)^{n+1}\theta^n} - 0$ \\ 
+$= \frac{n^{n+1}(n+1)^{n+1}\theta^{n+1}}{n^{n+1}(n+1)^{n+1}\theta^n}$ \\ 
+$= \theta$ \\ 
+Plugging this back into the bias formula: \\
+$\text{bias}(\hat{\theta_2}) = \mathbb{E}(\hat{\theta_2}) - \theta = \theta - \theta = 0$ \\ 
 as we aimed to show. \\ \\
-% lmao i did this wrong
-We can find the standard error by finding $\text{se}(\hat{\theta_2}) = \sqrt{\text{Variance}(\hat{\theta_2})} = \mathbb{E}(\hat{\theta_2}^2) - [\mathbb{E}(\hat{\theta_2})]^2$ \\ 
-$= integrals$ \\
-$= \frac{\theta}{\sqrt{n(n+2)}}$ \\ \\
+We can find the standard error by finding $\text{se}(\hat{\theta_2}) = \sqrt{\text{Variance}(\hat{\theta_2})} = \sqrt{\mathbb{E}(\hat{\theta_2}^2) - [\mathbb{E}(\hat{\theta_2})]^2}$ \\
+To find the variance, one component we still need to find is $\mathbb{E}(\hat{\theta_2}^2)$, in the same way as we did previously: \\
+$\mathbb{E}(\hat{\theta_2}^2)$ \\
+$= \int_{0}^{\frac{n+1}{n}\theta}\frac{n^{n+1}x^{n-1}}{(n+1)^n\theta^n} \cdot x \cdot x \text{ } dx $ \\
+$= \int_{0}^{\frac{n+1}{n}\theta}\frac{n^{n+1}x^{n+1}}{(n+1)^n\theta^n} \text{ } dx $ \\
+$= \frac{n^{n+1}x^{n+2}}{(n+1)^n\theta^n(n+2)} |_{x=0}^{\frac{n+1}{n}\theta} $ \\ 
+$= \frac{n^{n+1}(\frac{n+1}{n}\theta)^{n+2}}{(n+1)^n\theta^n(n+2)} - \frac{n^{n+1}0^{n+2}}{(n+1)^n\theta^n(n+2)}$ \\ 
+$= \frac{n^{n+1}(\frac{n+1}{n}\theta)^{n+2}}{(n+1)^n\theta^n(n+2)} - 0$ \\ 
+$= \frac{(n+1)^{n+2}\theta^{n+2}n^{n+1}}{(n+1)^n\theta^n(n+2)n^{n+2}}$ \\ 
+$= \frac{(n+1)^2\theta^2}{(n+2)n}$ \\ 
+Plugging this back into the standard error formula: \\
+$\text{se}(\hat{\theta_2}) = \sqrt{\mathbb{E}(\hat{\theta_2}^2) - [\mathbb{E}(\hat{\theta_2})]^2} \\
+= \sqrt{\mathbb{E}(\hat{\theta_2}^2) - [\mathbb{E}(\hat{\theta_2})]^2}$ \\ 
+$= \sqrt{\frac{(n+1)^2\theta^2}{(n+2)n} - \theta^2}$ \\
+$= \sqrt{\frac{(n+1)^2\theta^2 - n(n+2)\theta^2}{n(n+2)}}$ \\
+$= \sqrt{\frac{(n^2+1+2n)\theta^2 - (n^2+2n)\theta^2}{n(n+2)}}$ \\
+$= \sqrt{\frac{\theta^2}{n(n+2)}}$ \\
+$= \frac{\theta}{\sqrt{n(n+2)}}$ \\
 as we aimed to show.
 % 
 
