@@ -27,7 +27,7 @@
 
 % \framebox[1.1\width]{\textbf{answer}}
 
-We can calculate the mean and variance of the distribution which we can use to create a normal distribution according to CLT. Since the yearly log return is the sum of 252 iid daily log returns, we can simply find the 95\% confidence interval by taking 252 multiplied by these 95\% confidence interval bands, giving us \framebox[1.1\width]{\textbf{-0.3991505 to 0.4402316}} according to our seeded sample.
+We can calculate the mean and variance of the distribution which we can use to create a normal distribution according to CLT. Since the yearly log return is the sum of 252 iid daily log returns, we can simply find the 95\% confidence interval by taking 252 multiplied by these 95\% confidence interval bands, giving us \framebox[1.1\width]{\textbf{-0.3991505 to 0.4402316}} according to our seeded sample. I only used a sample size of $n = 252$, so this can vary wildly, and I noticed that this band decreased significantly at higher values (e.g. for 3626 samples, which is the number of data points we started with, I found that the 95\% confidence interval for yearly returns were -0.08958261 to 0.13066373).
 
 }
 
@@ -66,7 +66,8 @@ $\text{se}(\hat{\rho}_{500}) = 0.0306282343447513$
 \subsection*{(c)}
 
 As stated, the approximate formulas for large $n$ are $\text{bias}(\hat{\rho}_n) \approx 0$ and $\text{se}(\hat{\rho}_n) \approx \frac{1-\rho^2}{\sqrt{n}} = \frac{1 - (\frac{0.8}{\sqrt{2}})^2}{\sqrt{10000}} = \frac{1 - 0.32}{100} = \frac{0.68}{100} = 0.0068$, since we know that $\rho_{12} = \frac{\sigma_{12}}{\sqrt{\sigma_{11}\sigma_{22}}} = \frac{0.8}{\sqrt{2}}$ and $n = 10000$, as given. \\ \\
-Looking at our estimated values, the bias is very close to 0, and only gets better as $n$ increases, while the variance is initially not as close to the actual value but also continues to decrease and get better as $n$ increases.
+Looking at our estimated values, the bias is very close to 0, and only gets better as $n$ increases, while the variance is initially not as close to the actual value but also continues to decrease and get better as $n$ increases. 
+\newpage
 
 }
 

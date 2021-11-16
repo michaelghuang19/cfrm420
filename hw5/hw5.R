@@ -21,7 +21,7 @@ n <- 252
 set.seed(123)
 
 r <- rnorm(n=n, mean=sp500_ret_mean, sd=sp500_ret_sd)
-ci <- sp500_ret_mean + c(-1,1)*qnorm(1-alpha/2)*sp500_ret_sd/sqrt(n)
+ci <- sp500_ret_mean + c(-1,1)*qnorm(1-alpha/2)*sd(r)/sqrt(n)
 print(252 * ci)
 
 # Question 2
