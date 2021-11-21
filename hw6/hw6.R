@@ -37,10 +37,13 @@ print(bootcor)
 plot(bootcor)
 
 # 1(d)
-ci.q <- quantile(bootcor, prob=c(0.025,0.975))
-print(ci.q)
-ci.n <- cor.stat(data) + c(-1,1)*qnorm(0.975)*sd(bootcor)
-print(ci.n)
+
+ci <- boot.ci(bootcor, conf=0.95, type=c("norm","perc"))
+print(ci)
+
+# 1(e)
+cor(data)
+n <- length(data)
 
 # Question 2
 

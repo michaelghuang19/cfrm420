@@ -85,7 +85,15 @@ Calculations and Intervals on Original Scale
 
 \subsection*{(e)}
 
-
+We can calculate the approximate 95\% confidence interval for $\hat{\rho}$ as given, with the fact that $n = 7252$ and $\hat{\rho} = 0.6687307$ as we find using R: \\
+$(\hat{\rho} - 1.96 \frac{1 - \hat{\rho}^2}{\sqrt{n}}, \hat{\rho} + 1.96 \frac{1 - \hat{\rho}^2}{\sqrt{n}})$ \\
+= $(0.6687307 - 1.96 \cdot \frac{1 - 0.6687307^2}{\sqrt{7252}}, 0.6687307 + 1.96 \cdot \frac{1 - 0.6687307^2}{\sqrt{7252}})$ \\
+= $(0.6687307 - 1.96 \cdot \frac{1 - 0.44720074912}{\sqrt{7252}}, 0.6687307 + 1.96 \cdot \frac{1 - 0.44720074912}{\sqrt{7252}})$ \\
+= $(0.6687307 - 1.96 \cdot \frac{0.55279925088}{\sqrt{7252}}, 0.6687307 + 1.96 \cdot \frac{0.55279925088}{\sqrt{7252}})$ \\
+= $(0.6687307 - 1.96 \cdot 0.00649140264, 0.6687307 + 1.96 \cdot 0.00649140264)$ \\
+= $(0.6687307 - 0.01272314917, 0.6687307 + 0.01272314917)$ \\
+= $(0.65600755083, 0.68145384917)$ \\
+This approximate 95\% confidence interval seems to be relatively close, but much more refined than both of the confidence intervals that we previously found. In this case, it seems that the normal is a little bit closer to these approximate values, since it is a little bit higher than those of the 95\% percentile confidence interval.
 
 }
 
