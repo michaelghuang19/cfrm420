@@ -94,6 +94,7 @@ $(\hat{\rho} - 1.96 \frac{1 - \hat{\rho}^2}{\sqrt{n}}, \hat{\rho} + 1.96 \frac{1
 = $(0.6687307 - 0.01272314917, 0.6687307 + 0.01272314917)$ \\
 = $(0.65600755083, 0.68145384917)$ \\
 This approximate 95\% confidence interval seems to be relatively close, but much more refined than both of the confidence intervals that we previously found. In this case, it seems that the normal is a little bit closer to these approximate values, since it is a little bit higher than those of the 95\% percentile confidence interval.
+\newpage
 
 }
 
@@ -102,15 +103,40 @@ This approximate 95\% confidence interval seems to be relatively close, but much
 
 \subsection*{(a)}
 
-
+We calculate and plot this using R, and it seems that the distribution is approximately normal, although a tiny bit off:
+\begin{figure}[h!]
+  \centering
+  \includegraphics[width=500pt]{hw6_2a.png}
+\end{figure}
 
 \subsection*{(b)}
 
+See R file for the implementation: \\
+\begin{verbatim}
+  BOOTSTRAP CONFIDENCE INTERVAL CALCULATIONS
+Based on 1000 bootstrap replicates
 
+CALL : 
+boot.ci(boot.out = bootmean, conf = 0.9, type = c("norm", "perc", 
+    "bca"))
+
+Intervals : 
+Level      Normal             Percentile            BCa          
+90%   ( 67.7, 139.6 )   ( 69.4, 141.8 )   ( 74.5, 152.3 )  
+Calculations and Intervals on Original Scale
+\end{verbatim}
 
 \subsection*{(c)}
 
-
+See R file for specific implementation. I achieved the following results. From these results, it seems that they were all pretty similar, weith the BCa having the largest confidence interval, followed by the percentile and normal, which were extremely close. The percentile tended to have lower quantile values than the BCa, and the normal had even lower values than the percentile. \\ \\ 
+\begin{verbatim}
+  print(ci.normal)
+  [1]  71.42664 128.66163
+  > print(ci.percent)
+  [1]  72.89518 130.05975
+  > print(ci.bca)
+  [1]  75.85013 135.36732
+\end{verbatim}
 
 }
 
