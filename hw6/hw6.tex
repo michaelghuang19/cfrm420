@@ -73,7 +73,7 @@ This approximate 95\% confidence interval seems to be relatively close, but much
 
 \subsection*{(a)}
 
-We calculate and plot this using R, and it seems that the distribution is approximately normal, although a tiny bit off:
+We calculate and plot this using R, and it seems that the distribution is a bit skewed and not normal:
 \begin{figure}[h!]
   \centering
   \includegraphics[width=500pt]{hw6_2a.png}
@@ -81,32 +81,18 @@ We calculate and plot this using R, and it seems that the distribution is approx
 
 \subsection*{(b)}
 
-See R file for the implementation: \\
-\begin{verbatim}
-  BOOTSTRAP CONFIDENCE INTERVAL CALCULATIONS
-Based on 1000 bootstrap replicates
-
-CALL : 
-boot.ci(boot.out = bootmean, conf = 0.9, type = c("norm", "perc", 
-    "bca"))
-
-Intervals : 
-Level      Normal             Percentile            BCa          
-90%   ( 67.7, 139.6 )   ( 69.4, 141.8 )   ( 74.5, 152.3 )  
-Calculations and Intervals on Original Scale
-\end{verbatim}
+We implement this in R, and get the following results: \\
+\framebox[1.1\width]{\textbf{Normal 90\% CI: ( 67.7, 139.6 )}} \\
+\framebox[1.1\width]{\textbf{Percentile 90\% CI: ( 69.4, 141.8 )}} \\
+\framebox[1.1\width]{\textbf{BCa 90\% CI: ( 74.5, 152.3 )}}
 
 \subsection*{(c)}
 
-See R file for specific implementation. I achieved the following results. From these results, it seems that they were all pretty similar, weith the BCa having the largest confidence interval, followed by the percentile and normal, which were extremely close. The percentile tended to have lower quantile values than the BCa, and the normal had even lower values than the percentile. \\ \\ 
-\begin{verbatim}
-  print(ci.normal)
-  [1]  71.42664 128.66163
-  > print(ci.percent)
-  [1]  72.89518 130.05975
-  > print(ci.bca)
-  [1]  75.85013 135.36732
-\end{verbatim}
+See R file for specific implementation. I achieved the following results: \\
+Normal: 0.869 \\ 
+Percentile: 0.87 \\
+BCa: 0.876 \\
+where we attempt to measure how each method performed by measuring $\mathbb{P}(A \leq \beta \leq B)$ for the lower and upper limits of the confidence interval. From these results, the performance seems to be relatively close, but BCa seems to perform the best, with Percentile next best, and Normal following, which was extremely close in terms of performance.
 
 }
 
