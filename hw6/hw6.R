@@ -69,27 +69,22 @@ ci <- boot.ci(bootmean, conf=0.90, type=c("norm","perc","bca"))
 # 2(c)
 
 n.mc = 1000
+beta = 100
 
-ci.normal <- numeric(2)
-ci.percent <- numeric(2)
-ci.bca <- numeric(2)
+pr.norm <- 0
+pr.percent <- 0
+pr.bca <- 0
 
 for (trial in 1:n.mc) {
   x <- rexp(n.samp, rate=rate)
   bootmean <- boot(x, statistic=mean.boot, R=B)
   ci <- boot.ci(bootmean, conf=0.90, type=c("norm","perc","bca"))
   
-  ci.normal[1] = ci.normal[1] + (1/n.mc) * ci$normal[2]
-  ci.normal[2] = ci.normal[2] + (1/n.mc) * ci$normal[3]
-  
-  ci.percent[1] = ci.percent[1] + (1/n.mc) * ci$percent[4]
-  ci.percent[2] = ci.percent[2] + (1/n.mc) * ci$percent[5]
-  
-  ci.bca[1] = ci.bca[1] + (1/n.mc) * ci$bca[4]
-  ci.bca[2] = ci.bca[2] + (1/n.mc) * ci$bca[5]
+  pr.norm <- pr.norm + (1/n.mc) * (ci$normal[2] <= beta && beta <= ci$normal[3])
+  pr.percent <- pr.percent + (1/n.mc) * (ci$percent[4] <= beta && beta <= ci$percent[5])
+  pr.bca <- pr.bca + (1/n.mc) * (ci$bca[4] <= beta && beta <= ci$bca[5])
 }
 
-print(ci.normal)
-print(ci.percent)
-print(ci.bca)
-
+print(pr.norm)
+print(pr.percent)
+print(pr.bca)
