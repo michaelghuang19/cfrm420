@@ -29,39 +29,19 @@
 
 \subsection*{(a)}
 
-See R file for the implementation: \\
-\begin{verbatim}
-  ORDINARY NONPARAMETRIC BOOTSTRAP
-
-
-  Call:
-  boot(data = data, statistic = cor.stat, R = 1)
-  
-  
-  Bootstrap Statistics :
-       original      bias    std. error
-  t1* 0.6687307 0.001991947          NA
-\end{verbatim}
+We implement this in R. One value that is generated is \\
+\framebox[1.1\width]{\textbf{Estimate: 0.6739545}}
 
 \subsection*{(b)}
 
-See R file for the implementation: \\
-\begin{verbatim}
-  ORDINARY NONPARAMETRIC BOOTSTRAP
-
-
-  Call:
-  boot(data = data, statistic = cor.stat, R = B)
-  
-  
-  Bootstrap Statistics :
-       original       bias    std. error
-  t1* 0.6687307 6.870455e-05  0.01524621
-\end{verbatim}
+We implement this in R. The bootstrap statistics are \\
+\framebox[1.1\width]{\textbf{Estimate: 0.6687307}} \\
+\framebox[1.1\width]{\textbf{Bias: 6.870455e-05}} \\
+\framebox[1.1\width]{\textbf{Std. error: 0.01524621}}
 
 \subsection*{(c)}
 
-We plot in R, and the distribution does seem to be approximately normal:
+We plot in R, and the distribution does seem to be approximately normal, with slightly lower tails than the normal distribution line:
 \begin{figure}[h!]
   \centering
   \includegraphics[width=500pt]{hw6_1c.png}
@@ -69,31 +49,21 @@ We plot in R, and the distribution does seem to be approximately normal:
 
 \subsection*{(d)}
 
-See R file for implementation: \\ 
-\begin{verbatim}
-  BOOTSTRAP CONFIDENCE INTERVAL CALCULATIONS
-Based on 10000 bootstrap replicates
-
-CALL : 
-boot.ci(boot.out = bootcor, conf = 0.95, type = c("norm", "perc"))
-
-Intervals : 
-Level      Normal             Percentile     
-95%   ( 0.6388,  0.6985 )   ( 0.6379,  0.6976 )  
-Calculations and Intervals on Original Scale
-\end{verbatim}
+We implement this in R, and get the following values: \\ 
+\framebox[1.1\width]{\textbf{Normal 95\% CI: ( 0.6388,  0.6985 )}} \\ 
+\framebox[1.1\width]{\textbf{Percentile 95\% CI: ( 0.6379,  0.6976 )}}
 
 \subsection*{(e)}
 
-We can calculate the approximate 95\% confidence interval for $\hat{\rho}$ as given, with the fact that $n = 7252$ and $\hat{\rho} = 0.6687307$ as we find using R: \\
+We can calculate the approximate 95\% confidence interval for $\hat{\rho}$ as given, with the fact that $n = 3626$ and $\hat{\rho} = 0.6687307$ as we find using R: \\
 $(\hat{\rho} - 1.96 \frac{1 - \hat{\rho}^2}{\sqrt{n}}, \hat{\rho} + 1.96 \frac{1 - \hat{\rho}^2}{\sqrt{n}})$ \\
-= $(0.6687307 - 1.96 \cdot \frac{1 - 0.6687307^2}{\sqrt{7252}}, 0.6687307 + 1.96 \cdot \frac{1 - 0.6687307^2}{\sqrt{7252}})$ \\
-= $(0.6687307 - 1.96 \cdot \frac{1 - 0.44720074912}{\sqrt{7252}}, 0.6687307 + 1.96 \cdot \frac{1 - 0.44720074912}{\sqrt{7252}})$ \\
-= $(0.6687307 - 1.96 \cdot \frac{0.55279925088}{\sqrt{7252}}, 0.6687307 + 1.96 \cdot \frac{0.55279925088}{\sqrt{7252}})$ \\
-= $(0.6687307 - 1.96 \cdot 0.00649140264, 0.6687307 + 1.96 \cdot 0.00649140264)$ \\
-= $(0.6687307 - 0.01272314917, 0.6687307 + 0.01272314917)$ \\
-= $(0.65600755083, 0.68145384917)$ \\
-This approximate 95\% confidence interval seems to be relatively close, but much more refined than both of the confidence intervals that we previously found. In this case, it seems that the normal is a little bit closer to these approximate values, since it is a little bit higher than those of the 95\% percentile confidence interval.
+= $(0.6687307 - 1.96 \cdot \frac{1 - 0.6687307^2}{\sqrt{3626}}, 0.6687307 + 1.96 \cdot \frac{1 - 0.6687307^2}{\sqrt{3626}})$ \\
+= $(0.6687307 - 1.96 \cdot \frac{1 - 0.44720074912}{\sqrt{3626}}, 0.6687307 + 1.96 \cdot \frac{1 - 0.44720074912}{\sqrt{3626}})$ \\
+= $(0.6687307 - 1.96 \cdot \frac{0.55279925088}{\sqrt{3626}}, 0.6687307 + 1.96 \cdot \frac{0.55279925088}{\sqrt{3626}})$ \\
+= $(0.6687307 - 1.96 \cdot 0.00918022965, 0.6687307 + 1.96 \cdot 0.00918022965)$ \\
+= $(0.6687307 - 0.01799325011, 0.6687307 + 0.01799325011)$ \\
+= $(0.65073744989, 0.68672395011)$ \\
+This approximate 95\% confidence interval seems to be relatively close, but much smaller and thus more refined than both of the confidence intervals that we previously found. In this case, it seems that this calculated 95\% confidence interval is the most refined and therefore the most appropriate in this situation.
 \newpage
 
 }

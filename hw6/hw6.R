@@ -22,8 +22,8 @@ cor.stat <- function(x,i){
 }
 
 library(boot)
-bootcor <- boot(data, statistic=cor.stat, R=1)
-print(bootcor)
+bootcor <- boot(data, statistic=cor.stat, R=1000)
+print(bootcor$t[1])
 
 # 1(b)
 
@@ -43,7 +43,7 @@ print(ci)
 
 # 1(e)
 rho_hat <- cor(data)
-n <- length(data)
+n <- length(data$MSFT)
 
 # Question 2
 
@@ -79,16 +79,17 @@ for (trial in 1:n.mc) {
   bootmean <- boot(x, statistic=mean.boot, R=B)
   ci <- boot.ci(bootmean, conf=0.90, type=c("norm","perc","bca"))
   
-  normal_lo <- ci$normal[2]
-  normal_hi <- ci$normal[3]
+  ci.normal[1] = ci.normal[1] + (1/n.mc) * ci$normal[2]
+  ci.normal[2] = ci.normal[2] + (1/n.mc) * ci$normal[3]
   
-  ci.normal[1] += (1/n.mc) * ci$normal[2]
+  ci.percent[1] = ci.percent[1] + (1/n.mc) * ci$percent[4]
+  ci.percent[2] = ci.percent[2] + (1/n.mc) * ci$percent[5]
   
-  percent_lo <- ci$percent[4]
-  percent_hi <- ci$percent[5]
-  
-  bca_lo <- ci$bca[4]
-  bca_hi <- ci$bca[5]
+  ci.bca[1] = ci.bca[1] + (1/n.mc) * ci$bca[4]
+  ci.bca[2] = ci.bca[2] + (1/n.mc) * ci$bca[5]
 }
 
+print(ci.normal)
+print(ci.percent)
+print(ci.bca)
 
