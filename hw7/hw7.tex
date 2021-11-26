@@ -29,11 +29,21 @@
 
 \subsection*{(a)}
 
-
+We implement this in R. The t-test assumes that the sample comes from a normal distribution.
+% but that the monthly log returns are not normal. 
+% what does this mean?
+\\
+We get the following results: \\ 
+t-statistic: 2.9423 \\
+p-value: 0.006696 \\ \\
+Since our p-value of $0.006696 < 0.05$, we end up rejecting the null hypothesis that $\mu_1 = \mu_2$ at a 5\% significance level; i.e. the difference in the means of the two series is statistically significant, in fact, $\mu_1$ is statistically significantly greater than $\mu_2$.
 
 \subsection*{(b)}
 
-
+We implement this in R, and get the following results: \\ 
+t-statistic = -2.1296 \\
+p-value = 0.05662 \\ \\ 
+Since our p-value of $0.05662 > 0.05$, we end up failing to reject the null hypothesis that $\mu_2 = 0.16$ at a 5\% significance level; i.e. the difference between $\mu_2$ and $0.16$ is not statistically significant.
 
 
 }
@@ -44,9 +54,7 @@
 
 
 
-
 \subsection*{(b)}
-
 
 
 
@@ -54,9 +62,7 @@
 
 
 
-
 \subsection*{(d)}
-
 
 
 
@@ -64,14 +70,11 @@
 
 
 
-
 \subsection*{(f)}
 
 
 
-
 \subsection*{(g)}
-
 
 
 
