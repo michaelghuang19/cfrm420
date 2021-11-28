@@ -18,15 +18,6 @@
 \section*{1.}
 {\Large 
 
-% \begin{verbatim}
-%   Text enclosed inside \texttt{verbatim}
-%   environment 
-%   is printed directly 
-%   and all \LaTeX{} commands are ignored.
-% \end{verbatim}
-
-% \framebox[1.1\width]{\textbf{answer}}
-
 \subsection*{(a)}
 
 We implement this in R. The t-test assumes that the sample comes from a normal distribution.
@@ -52,7 +43,7 @@ Since our p-value of $0.05662 > 0.05$, we end up failing to reject the null hypo
 {\Large 
 \subsection*{(a)}
 
-% check this
+% TODO: check this
 \begin{itemize}
   \item Let $T = |S|$ and $t = |s|$. Under the null hypothesis, let the distribution of $T$ have cdf $F_T$, then $P = 1 - F_T(T).$
 \end{itemize}
@@ -65,7 +56,7 @@ In the same way, taking the probability that the $P$ is contained within the ran
   \item This implies $\mathbb{P}(P \leq x) = 1 - F_T(F_T^{-1}(1-x)),$ where $F_T^{-1}$ is the inverse function of $F_T$ or the quantile function of $T$. 
 \end{itemize}
 We take the cdf of the inverse, which gives us the quantile function of the normal.
-% what? 
+% TODO: what? 
 \begin{itemize}
   \item Therefore, the $p-$value has distribution $P \sim$ Uniform(0,1).
 \end{itemize}
