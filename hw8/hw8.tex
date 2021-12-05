@@ -25,6 +25,7 @@ For the ARMA process given by (1), $X_t + 0.5X_{t-1} = \varepsilon_t + \varepsil
 
 For the ARMA process given by (2), $X_t - \frac{3}{2}X_{t-1} + \frac{1}{2}X_{t-2}= \varepsilon_t + \varepsilon_{t-1} - \varepsilon_{t-3}$, we implement in this R. We have that $\phi_1 = -\frac{3}{2}, \phi_2 = \frac{1}{2}$; solving this gives us the roots $z = 1, 2$ in the complex plane, so none of the zeros are within the unit circle on the complex plane, so there does exist a causal stationary solution to this ARMA process. \\ \\
 For the ARMA process given by (3), $X_t - 5X_{t-1} + 8X_{t-2} - 2X_{t-5}= 2\varepsilon_t$, we implement in this R. We have that $\phi_1 = -5, \phi_2 = 8, \phi_5 = -2$; solving this gives us the zeros $z = 0.3575712, 0.3575712, 1.7073595, 1.3415130, and 1.7073595$ in the complex plane, which does have some causal stationary solutions since some zeros are not within the unit circle on the complex plane, but others are, and thus are not causal stationary solutions.
+\newpage
 
 }
 
@@ -32,19 +33,62 @@ For the ARMA process given by (3), $X_t - 5X_{t-1} + 8X_{t-2} - 2X_{t-5}= 2\vare
 {\Large 
 \subsection*{(a)}
 
-
+We assume values of $h$ above max$\{p, q\}$. We take the covariance of $X_{t-h}$ and the right-hand side of (1) to get a covariance of 0. We then take the covariance of $X_{t-h}$ and the left-hand side of (1) to get $\gamma(h) + 0.5\gamma(h-1)$. We equate these two covariances to get \\
+$\gamma(h) + 0.5\gamma(h-1) = 0.$ \\
+which is exactly what we sought to find.
 
 \subsection*{(b)}
 
-
+We continue for the value of $h=0$. We take the covariance of $X_{t-h}$ and the right-hand side of (1) in this case to get \\ $\text{Cov}(X_t, \varepsilon_t + \varepsilon_{t-1} - \varepsilon_{t-2})$ \\ 
+$= \text{Cov}(\varepsilon_t + \varepsilon_{t-1} - \varepsilon_{t-2} - 0.5X_{t-1}, \varepsilon_t + \varepsilon_{t-1} - \varepsilon_{t-2})$ \\ 
+$= -0.5\text{Cov}(\varepsilon_{t-1} + \varepsilon_{t-2} - \varepsilon_{t-3} - 0.5X_{t-2}, \varepsilon_t + \varepsilon_{t-1} - \varepsilon_{t-2}) + \sigma^2 + \sigma^2 + \sigma^2$ \\ 
+$= 0.25\text{Cov}(\varepsilon_{t-2} + \varepsilon_{t-3} - \varepsilon_{t-4} - 0.5X_{t-3}, \varepsilon_t + \varepsilon_{t-1} - \varepsilon_{t-2}) + 3 + \sigma^2 - \sigma^2$ \\ 
+$= -0.25\sigma^2 + 3$ \\ 
+$= -0.25 + 3$ \\
+$= 2.75$. \\
+We then take the covariance of $X_{t-h}$ and the left-hand side of (1) to get $\gamma(h) + 0.5\gamma(h-1)$ yet again. We equate these expressions to get \\
+$\gamma(h) + 0.5\gamma(h-1) = 2.75.$ \\
+which is exactly what we sought to find.
 
 \subsection*{(c)}
 
-
+We continue for the value of $h=1$. We take the covariance of $X_{t-h}$ and the right-hand side of (1) in this case to get \\ $\text{Cov}(X_{t-1}, \varepsilon_t + \varepsilon_{t-1} - \varepsilon_{t-2})$ \\ 
+$= \text{Cov}(X_{t-1}, \varepsilon_{t-1})$ \\ 
+$= \text{Cov}(\varepsilon_{t-1} + \varepsilon_{t-2} - \varepsilon_{t-3} - 0.5X_{t-2}, \varepsilon_{t-1})$ \\
+$= \text{Cov}(\varepsilon_{t-1} + \varepsilon_{t-2} - \varepsilon_{t-3} - 0.5X_{t-2}, \varepsilon_{t} + \varepsilon_{t-1} - \varepsilon_{t-2})$ \\
+$= 0.5\text{Cov}(X_{t-2}, \varepsilon_{t-2}) + \sigma^2 - \sigma^2$ \\
+$= 0.5\text{Cov}(\varepsilon_{t-2} + \varepsilon_{t-3} - \varepsilon_{t-4} - 0.5X_{t-3}, \varepsilon_{t-2})$ \\
+$= 0.5\sigma^2$ \\
+$= 0.5$. \\
+We then take the covariance of $X_{t-h}$ and the left-hand side of (1) to get $\gamma(h) + 0.5\gamma(h-1)$ yet again. We equate these expressions to get \\
+$\gamma(h) + 0.5\gamma(h-1) = 0.5.$ \\
+which is exactly what we sought to find. \\ \\
+We continue for the value of $h=2$. We take the covariance of $X_{t-h}$ and the right-hand side of (1) in this case to get \\ $\text{Cov}(X_{t-2}, \varepsilon_t + \varepsilon_{t-1} - \varepsilon_{t-2})$ \\ 
+$= \text{Cov}(X_{t-2}, -\varepsilon_{t-2})$ \\ 
+$= -\text{Cov}(\varepsilon_{t-2} + \varepsilon_{t-3} - \varepsilon_{t-4} - 0.5X_{t-3}, \varepsilon_{t-2})$ \\
+$= -\sigma^2$ \\
+$= -1$. \\
+We then take the covariance of $X_{t-h}$ and the left-hand side of (1) to get $\gamma(h) + 0.5\gamma(h-1)$ yet again. We equate these expressions to get \\
+$\gamma(h) + 0.5\gamma(h-1) = -1.$ \\
+which is exactly what we sought to find. \\ \\
+We put all of these Yule-Walker equations together into a system of linear equations in R and solve. We have $\textbf{c} = [2.75, 0.5, -1]$ and $A = \begin{bmatrix}
+  1 & 0.5 & 0 \\
+  0.5 & 1 & 0 \\
+  0 & 0.5 & 1
+  \end{bmatrix}$ \\ \\
+Solving in R, we can verify that our result $\gamma$ is indeed $[3.3333333, -1.1666667, -0.4166667]$, which corresponds accordingly to $\gamma(0), \gamma(1), \gamma(2)$.
 
 \subsection*{(d)}
 
-
+We implement this in R, using the fact that $\rho(h) = \gamma(h) / \gamma(0)$ and substituting as necessary using equations 4-6 and the equation in part (a): \\
+$\rho(0) = 1$ \\
+$\rho(1) = -0.35$ \\
+$\rho(2) = -0.125$ \\
+$\rho(3) = 0.0625$ \\
+$\rho(4) = -0.03125$ \\
+$\rho(5) = 0.015625$ \\
+% TODO: this is wrong
+Using the ARMAacf function in R, we also verify these results.
 
 }
 

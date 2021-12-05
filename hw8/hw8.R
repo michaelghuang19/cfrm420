@@ -16,8 +16,27 @@ Mod(sol)
 
 # Question 2
 
-sol <- polyroot(c())
-Mod(sol)
+# 2(c)
+
+A.data <- c(1, 0.5, 0, 0.5, 1, 0, 0, 0.5, 1)
+A <- matrix(A.data, nrow=3, ncol=3, byrow=TRUE)
+A_inv <- solve(A)
+
+c.data <- c(2.75, 0.5, -1)
+c <- matrix(c.data, nrow=3, ncol=1, byrow=TRUE)
+
+result <- A_inv %*% c
+
+# 2(d)
+
+rho_0 <- result[1] / result[1]
+rho_1 <- result[2] / result[1]
+rho_2 <- result[3] / result[1]
+rho_3 <- -0.5*result[3] / result[1]
+rho_4 <- -0.5*rho_3 / result[1]
+rho_5 <- -0.5*rho_4 / result[1]
+
+arma_result <- ARMAacf(-0.5, c(1, -1), lag.max=5)
 
 # Question 3
 
