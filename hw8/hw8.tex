@@ -89,6 +89,7 @@ $\rho(4) = -0.03125$ \\
 $\rho(5) = 0.015625$ \\
 % TODO: this is wrong
 Using the ARMAacf function in R, we also verify these results.
+\newpage
 
 }
 
@@ -97,15 +98,20 @@ Using the ARMAacf function in R, we also verify these results.
 
 \subsection*{(a)}
 
-
+We implement this in R: \\ 
+\begin{figure}[h!]
+  \centering
+  \includegraphics[width=500pt]{hw8_3a.png}
+\end{figure}
 
 \subsection*{(b)}
 
-
+In regards to the hypothesis test at a 5\% significance level for $\rho(1) = 0$, we see that the value at $\rho(1)$ is well above the confidence intervals, so we successfully rejected the null hypothesis and find that $\rho(1) \neq 0$.
 
 \subsection*{(c)}
 
-
+Looking at the graphed sample autocorrelation function at the other lag values, we see that the null hyopethesis of zero autocorrelation is rejected at 2 lags. We would expect to see that the null hypothesis of zero autocorrelation would never be rejected outside the at a 5\% significance level if the data were independent white noise, since for independent white noise, $\hat{\rho}(h)$ should lie within the band; in the same vein, it is reasonable to assume the data follows MA(1) process since $\hat{\rho}(h)$ lies within the band for most $|h| > 1$, since for an MA(1) process, $\rho(h) = 0$ for all $|h| > 1$.
+% TODO: check this reasoning for guessing how many times?
 
 }
 

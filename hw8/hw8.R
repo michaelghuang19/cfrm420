@@ -40,4 +40,20 @@ arma_result <- ARMAacf(-0.5, c(1, -1), lag.max=5)
 
 # Question 3
 
+library(Ecdat)
+data <- diff(Tbrate[,1])
+
+# 3(a)
+
+acf <- acf(ts(data, frequency=1))
+ci <- 1.96 * (1 / sqrt(length(data)))
+x <- seq(-1, 24)
+y <- rep(ci, length(x))
+lines(x, y, col='blue')
+lines(x, -y, col='blue')
+
+# 3(b)
+
+
+
 
