@@ -19,11 +19,12 @@
 {\Large 
 \subsection*{(a)}
 
-
+For the ARMA process given by (1), $X_t + 0.5X_{t-1} = \varepsilon_t + \varepsilon_{t-1} - \varepsilon_{t-2}$, or $\phi(z) = 1 + 0.5z$ we implement in this R. We have $\phi_1 = 0.5$, and solving gives us the root $z = -2$, which is not a zero within the unit circle on the complex plane, so there exists a causal stationary solution to this ARMA process.
 
 \subsection*{(b)}
 
-
+For the ARMA process given by (2), $X_t - \frac{3}{2}X_{t-1} + \frac{1}{2}X_{t-2}= \varepsilon_t + \varepsilon_{t-1} - \varepsilon_{t-3}$, we implement in this R. We have that $\phi_1 = -\frac{3}{2}, \phi_2 = \frac{1}{2}$; solving this gives us the roots $z = 1, 2$ in the complex plane, so none of the zeros are within the unit circle on the complex plane, so there does exist a causal stationary solution to this ARMA process. \\ \\
+For the ARMA process given by (3), $X_t - 5X_{t-1} + 8X_{t-2} - 2X_{t-5}= 2\varepsilon_t$, we implement in this R. We have that $\phi_1 = -5, \phi_2 = 8, \phi_5 = -2$; solving this gives us the zeros $z = 0.3575712, 0.3575712, 1.7073595, 1.3415130, and 1.7073595$ in the complex plane, which does have some causal stationary solutions since some zeros are not within the unit circle on the complex plane, but others are, and thus are not causal stationary solutions.
 
 }
 
