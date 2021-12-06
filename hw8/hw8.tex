@@ -19,12 +19,12 @@
 {\Large 
 \subsection*{(a)}
 
-For the ARMA process given by (1), $X_t + 0.5X_{t-1} = \varepsilon_t + \varepsilon_{t-1} - \varepsilon_{t-2}$, or $\phi(z) = 1 + 0.5z$ we implement in this R. We have $\phi_1 = 0.5$, and solving gives us the root $z = -2$, which is not a zero within the unit circle on the complex plane, so there exists a causal stationary solution to this ARMA process.
+For the ARMA process given by (1), $X_t + 0.5X_{t-1} = \varepsilon_t + \varepsilon_{t-1} - \varepsilon_{t-2}$, or $\phi(z) = 1 + 0.5z$ we implement in this R. We have $\phi_1 = -0.5$, and solving gives us the root $z = 2$, which is not a zero within the unit circle on the complex plane, so there exists a causal stationary solution to this ARMA process.
 
 \subsection*{(b)}
 
-For the ARMA process given by (2), $X_t - \frac{3}{2}X_{t-1} + \frac{1}{2}X_{t-2}= \varepsilon_t + \varepsilon_{t-1} - \varepsilon_{t-3}$, we implement in this R. We have that $\phi_1 = -\frac{3}{2}, \phi_2 = \frac{1}{2}$; solving this gives us the roots $z = 1, 2$ in the complex plane, so none of the zeros are within the unit circle on the complex plane, so there does exist a causal stationary solution to this ARMA process. \\ \\
-For the ARMA process given by (3), $X_t - 5X_{t-1} + 8X_{t-2} - 2X_{t-5}= 2\varepsilon_t$, we implement in this R. We have that $\phi_1 = -5, \phi_2 = 8, \phi_5 = -2$; solving this gives us the zeros $z = 0.3575712, 0.3575712, 1.7073595, 1.3415130, and 1.7073595$ in the complex plane, which does have some causal stationary solutions since some zeros are not within the unit circle on the complex plane, but others are, and thus are not causal stationary solutions.
+For the ARMA process given by (2), $X_t - \frac{3}{2}X_{t-1} + \frac{1}{2}X_{t-2}= \varepsilon_t + \varepsilon_{t-1} - \varepsilon_{t-3}$, we implement in this R. We have that $\phi_1 = \frac{3}{2}, \phi_2 = -\frac{1}{2}$; solving this gives us the roots $z = 0.5615528, 3.5615528$ in the complex plane, so one of the zeros is within the unit circle on the complex plane, so there does not exist a causal stationary solution to this ARMA process. \\ \\
+For the ARMA process given by (3), $X_t - 5X_{t-1} + 8X_{t-2} - 2X_{t-5}= 2\varepsilon_t$, we implement in this R. We have that $\phi_1 = 5, \phi_2 = -8, \phi_5 = 2$; solving this gives us the zeros $z = 0.1593374, 1.7094081, 1.0000000, 1.0738921,$ and $1.7094081$ in the complex plane, which does not a causal stationary solution since there exists a zero within the unit circle on the complex plane.
 \newpage
 
 }
@@ -87,8 +87,7 @@ $\rho(2) = -0.125$ \\
 $\rho(3) = 0.0625$ \\
 $\rho(4) = -0.03125$ \\
 $\rho(5) = 0.015625$ \\
-% TODO: this is wrong
-Using the ARMAacf function in R, we also verify these results.
+Using the ARMAacf() function in R, we also verify these results.
 \newpage
 
 }
@@ -110,8 +109,7 @@ In regards to the hypothesis test at a 5\% significance level for $\rho(1) = 0$,
 
 \subsection*{(c)}
 
-Looking at the graphed sample autocorrelation function at the other lag values, we see that the null hyopethesis of zero autocorrelation is rejected at 2 lags. We would expect to see that the null hypothesis of zero autocorrelation would never be rejected outside the at a 5\% significance level if the data were independent white noise, since for independent white noise, $\hat{\rho}(h)$ should lie within the band; in the same vein, it is reasonable to assume the data follows MA(1) process since $\hat{\rho}(h)$ lies within the band for most $|h| > 1$, since for an MA(1) process, $\rho(h) = 0$ for all $|h| > 1$.
-% TODO: check this reasoning for guessing how many times?
+Looking at the graphed sample autocorrelation function at the other lag values, we see that the null hypothesis of zero autocorrelation is rejected at 2 lags. We would expect to see that the null hypothesis of zero autocorrelation would never be rejected (i.e. there are 0 times it will be outside of the confidence intervals) at a 5\% significance level if the data were independent white noise, since for independent white noise, $\hat{\rho}(h)$ should lie within the band; in the same vein, it is reasonable to assume the data follows MA(1) process since $\hat{\rho}(h)$ lies within the band for most $|h| > 1$, since for an MA(1) process, $\rho(h) = 0$ for all $|h| > 1$.
 
 }
 

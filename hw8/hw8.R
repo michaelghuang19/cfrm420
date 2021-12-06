@@ -6,12 +6,15 @@
 
 # 1(a)
 
-sol <- polyroot(c(1, 0.5))
+sol <- polyroot(c(1, -0.5))
 Mod(sol)
 
 # 1(b)
 
-sol <- polyroot(c(1, -1.5, 0.5))
+sol <- polyroot(c(1, 1.5, -0.5))
+Mod(sol)
+
+sol <- polyroot(c(1, 5, -8, 0, 0, 2))
 Mod(sol)
 
 # Question 2
